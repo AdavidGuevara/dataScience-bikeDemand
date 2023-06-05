@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/main.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', path='images/bicycle.png') }}" type="image/x-icon">
+	<link rel="icon" href="{{ url_for('static', path='images/bicycle.png') }}" type="image/x-icon">
+    <title>Bike Sharing</title>
+</head>
+<body class="text-center">
+    <div class="container w-50">
+        <div class="panel-title text-center">
+            <h1 class="title" style="color:black">Bike Sharing Demand Predict</h1>
+            <hr>
+        </div>
+        <form method="POST" action="/">
+            <div class="row g-3">
+                <div class="col-md-4 item">
+                    <label for="select-season">Season</label>
+                    <select name="season" class="form-select" id="select-season" required>
+                        <option selected>Choose...</option>
+                        <option value="spring">Spring</option>
+                        <option value="summer">Summer</option>
+                        <option value="autumn">Autumn</option>
+                        <option value="winter">winter</option>
+                    </select>
+                </div>
+                <div class="col-md-4 item">
+                    <label for="select-dayDiv">Part of the day</label>
+                    <select name="day_div" class="form-select" id="select-dayDiv" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="early_morning">Early morning</option>
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                        <option value="night">Night</option>
+                    </select>
+                </div>
+                <div class="col-md-4 item">
+                    <label for="select-holiday">Holiday?</label>
+                    <select name="holiday" class="form-select" id="select-holiday" required>
+                        <option selected>Choose...</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-4 item">
+                    <label for="input-c">Temperature (°C)</label>
+                    <input name="c" type="number" class="form-control" id="input-c" step="0.1" min="-17.80" max="39.40" required />
+                </div>
+                <div class="col-md-4 item">
+                    <label for="select-rainSnow">Rain or snow?</label>
+                    <select name="rain_snow" class="form-select" id="select-rainSnow" required>
+                        <option selected>Choose...</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="col-md-4 item">
+                    <label for="input-humidity">Humidity</label>
+                    <input name="humidity" type="number" class="form-control" id="input-humidity" step="0.1" min="0" max="98" required />
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-4 item">
+                    <label for="input-solarRad">Solar radiation</label>
+                    <input name="solar_rad" type="number" class="form-control" id="input-solarRad" step="0.1" min="0" max="3.52" required />
+                </div>
+                <div class="col-md-4 item">
+                    <label for="select-windSpeed">Wind speed</label>
+                    <input name="wind_speed" type="number" class="form-control" id="select-windSpeed" step="0.1" min="0" max="7.40" required />
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary w-100" type="submit">Predict</button>
+            {% for message in get_flashed_messages(request) %}
+                <div class="w-100 alert alert-primary" role="alert">{{ message.message }}</div>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>

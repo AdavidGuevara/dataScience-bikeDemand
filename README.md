@@ -4,4 +4,6 @@
 - An EDA is made to the previously cleaned data.
 - A machine learning model is built to predict the demand for bicycles.
 - The machine learning model is deployed in an API made in fastAPI:
-    - Using data validation in a pydantic class.
+    - Using templates and static files.
+    - Using bootstrap.
+    - Using middleware.

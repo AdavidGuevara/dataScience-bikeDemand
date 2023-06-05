@@ -7,3 +7,4 @@
     - Using templates and static files.
     - Using bootstrap.
     - Using middleware.
+    - Docker.
